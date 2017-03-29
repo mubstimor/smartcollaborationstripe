@@ -33,19 +33,16 @@ try {
 catch(\Stripe\Error\Card $e) {
  $body = $e->getJsonBody();
     $err  = $body['error'];
-    $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
 }
 catch(\Stripe\Error\Authentication $e){
     $body = $e->getJsonBody();
     $err  = $body['error'];
-    $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
 }
 catch(\Stripe\Error\InvalidRequest $e){
     $body = $e->getJsonBody();
     $err  = $body['error'];
-    $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
 }
 catch(\Stripe\Error\Base $e){
