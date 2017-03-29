@@ -2,8 +2,10 @@
 
 require_once('vendor/stripe/stripe-php/init.php');
 
-\Stripe\Stripe::setApiKey('sk_test_sJofmAULIyYNFHMKsopEclQG');
-$charge = \Stripe\Charge::create(array('amount' => 200, 'currency' => 'gbp', 'source' => 'tok_1A2j7ZKfxZabGH9P2EZkOAbQ' ));
+\Stripe\Stripe::setApiKey('tok_1A2jL2KfxZabGH9PE2eVAtIj');
+
+try {
+$charge = \Stripe\Charge::create(array('amount' => 200, 'currency' => 'gbp', 'source' => 'tok_1A2j7ZKfxZabGH9P2EZkOAbQ', 'description' => 'testing on ch2' ));
 
   // Check that it was paid:
     if ($charge->paid == true) {
@@ -14,6 +16,13 @@ $charge = \Stripe\Charge::create(array('amount' => 200, 'currency' => 'gbp', 'so
 
  header('Content-Type: application/json');
  echo json_encode($response);
+}
+catch(\Stripe\Error\Card $e) {
+ // The card has been declined
+header('Content-Type: application/json');
+ echo json_encode($response);
+}
+
 
 //echo $charge;
 
