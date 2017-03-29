@@ -27,6 +27,11 @@ catch(\Stripe\Error\Authentication $e){
     header('Content-Type: application/json');
  echo json_encode($response);
 }
+catch(\Stripe\Error\InvalidRequest $e){
+    echo "invalid request";
+    header('Content-Type: application/json');
+ echo json_encode($response);
+}
 
 
 //echo $charge;
