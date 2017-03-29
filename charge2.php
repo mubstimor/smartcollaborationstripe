@@ -10,7 +10,7 @@ $response = array();
     $currency = $_REQUEST['currency'];
     $description = $_REQUEST['description'];
 
-    $response['starting-params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
+    // $response['starting-params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
 
 \Stripe\Stripe::setApiKey('sk_test_sJofmAULIyYNFHMKsopEclQG');
 
