@@ -5,15 +5,14 @@ require_once('vendor/stripe/stripe-php/init.php');
 // array for JSON response
 $response = array();
 
+    $token = $_REQUEST['Token'];
+    $amount = $_REQUEST['Amount'];
+    $currency = $_REQUEST['currency'];
+    $description = $_REQUEST['description'];
+
 \Stripe\Stripe::setApiKey('sk_test_sJofmAULIyYNFHMKsopEclQG');
 
-
-
 try {
-    $token = $_POST['Token'];
-    $amount = $_POST['Amount'];
-    $currency = $_POST['currency'];
-    $description = $_POST['description'];
 
     $charge = \Stripe\Charge::create(array('amount' => $amount*100, 'currency' => $currency, 'source' => 'tok_1A2jmOKfxZabGH9PH3nJvVCk', 'description' => $description ));
 
