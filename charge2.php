@@ -1,5 +1,7 @@
 <?php 
-
+/*
+* based on https://medium.com/@zachcoss/create-an-iphone-app-with-swift-that-charges-a-credit-card-using-stripe-and-heroku-d9020a4962a6
+*/
 require_once('vendor/stripe/stripe-php/init.php');
 
 // array for JSON response
@@ -47,6 +49,9 @@ catch(\Stripe\Error\InvalidRequest $e){
     $err  = $body['error'];
     $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
+}
+catch(\Stripe\Error\Base $e){
+    $response["error"] = "unable to process payment";
 }
 
 
