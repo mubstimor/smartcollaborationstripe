@@ -28,7 +28,7 @@ catch(\Stripe\Error\Authentication $e){
  echo json_encode($response);
 }
 catch(\Stripe\Error\InvalidRequest $e){
-    echo "invalid request";
+    echo "invalid request ".$e;
     header('Content-Type: application/json');
  echo json_encode($response);
 }
