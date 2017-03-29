@@ -16,7 +16,7 @@ $response = array();
 
 try {
 
-    $charge = \Stripe\Charge::create(array('amount' => $amount*100, 'currency' => $currency, 'source' => 'tok_1A2jmOKfxZabGH9PH3nJvVCk', 'description' => $description ));
+    $charge = \Stripe\Charge::create(array('amount' => $amount*100, 'currency' => $currency, 'source' => $token, 'description' => $description ));
 
   // Check that it was paid:
     if ($charge->paid == true) {
