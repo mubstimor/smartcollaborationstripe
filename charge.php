@@ -2,8 +2,10 @@
 
 require_once('vendor/autoload.php')
 
+
 // set api keys
-\Stripe\Stripe::setApiKey("sk_test_sJofmAULIyYNFHMKsopEclQG");
+
+/Stripe\Stripe::setApiKey("sk_test_sJofmAULIyYNFHMKsopEclQG");
 
 $token = $_POST['Token'];
 $amount = $_POST['Amount'];
