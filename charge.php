@@ -31,9 +31,13 @@ try {
 
  header('Content-Type: application/json');
  echo json_encode($response);
+ 
 } catch(\Stripe\Error\Card $e) {
  // The card has been declined
 header('Content-Type: application/json');
+ echo json_encode($response);
+}catch(\Stripe\Error\Authentication $e){
+    header('Content-Type: application/json');
  echo json_encode($response);
 }
 
