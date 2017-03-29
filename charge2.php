@@ -7,13 +7,14 @@ $response = array();
 
 \Stripe\Stripe::setApiKey('sk_test_sJofmAULIyYNFHMKsopEclQG');
 
-$token = $_POST['Token'];
-$amount = $_POST['Amount'];
-$currency = $_POST['currency'];
-$description = $_POST['description'];
+
 
 try {
-$charge = \Stripe\Charge::create(array('amount' => $amount*100, 'currency' => $currency, 'source' => 'tok_1A2jmOKfxZabGH9PH3nJvVCk', 'description' => $description ));
+    $token = $_POST['Token'];
+    $amount = $_POST['Amount'];
+    $currency = $_POST['currency'];
+    $description = $_POST['description'];
+    $charge = \Stripe\Charge::create(array('amount' => $amount*100, 'currency' => $currency, 'source' => 'tok_1A2jmOKfxZabGH9PH3nJvVCk', 'description' => $description ));
 
   // Check that it was paid:
     if ($charge->paid == true) {
