@@ -14,6 +14,7 @@ try {
     $amount = $_POST['Amount'];
     $currency = $_POST['currency'];
     $description = $_POST['description'];
+
     $charge = \Stripe\Charge::create(array('amount' => $amount*100, 'currency' => $currency, 'source' => 'tok_1A2jmOKfxZabGH9PH3nJvVCk', 'description' => $description ));
 
   // Check that it was paid:
@@ -31,16 +32,19 @@ try {
 catch(\Stripe\Error\Card $e) {
  $body = $e->getJsonBody();
     $err  = $body['error'];
+    $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
 }
 catch(\Stripe\Error\Authentication $e){
     $body = $e->getJsonBody();
     $err  = $body['error'];
+    $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
 }
 catch(\Stripe\Error\InvalidRequest $e){
     $body = $e->getJsonBody();
     $err  = $body['error'];
+    $response['params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
     $response["error"] = $err['message'];
 }
 
