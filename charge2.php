@@ -3,7 +3,7 @@
 * based on https://medium.com/@zachcoss/create-an-iphone-app-with-swift-that-charges-a-credit-card-using-stripe-and-heroku-d9020a4962a6
 */
 require_once('vendor/stripe/stripe-php/init.php');
-
+$my_stripe_key = getenv('STRIPE_KEY');
 // array for JSON response
 $response = array();
 
@@ -14,7 +14,7 @@ $response = array();
 
     // $response['starting-params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
 
-\Stripe\Stripe::setApiKey('sk_test_sJofmAULIyYNFHMKsopEclQG');
+\Stripe\Stripe::setApiKey($my_stripe_key);
 
 try {
 
