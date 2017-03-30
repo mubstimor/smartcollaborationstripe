@@ -22,7 +22,7 @@ try {
         $response['status'] = "Success";
         $response['message'] = "customer has been created!!";
         $response['customer_id'] = $customer->id;
-        $response['email'] = $customer->email;
+        $response['email'] = $customer->email; 
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
         $response['message'] = "Failed to create customer.";
