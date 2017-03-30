@@ -23,6 +23,11 @@ try {
         $response['message'] = "customer has been created!!";
         $response['customer_id'] = $customer->id;
         $response['email'] = $customer->email; 
+
+         $subscription = \Stripe\Subscription::create(array('customer' => $customer->id, 'plan' => 'basic-monthly' ));
+         $response['subscription_id'] = $subscription->id;
+
+
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
         $response['message'] = "Failed to create customer.";
