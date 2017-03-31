@@ -28,6 +28,8 @@ try {
         $response['subscription_status'] = $subscription->status;
         $response['plan'] = $subscription->plan->id;
         $response['plan_name'] = $subscription->plan->name;
+        $response['plan_interval'] = $subscription->plan->interval;
+        $response['plan_amount'] = $subscription->plan->amount;
 
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
