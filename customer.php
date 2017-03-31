@@ -8,6 +8,7 @@ $my_stripe_key = getenv('STRIPE_KEY');
 $response = array();
 
     $email = $_REQUEST['email'];
+    $club = $_REQUEST['club_id'];
 
     // $response['starting-params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
 
@@ -29,7 +30,7 @@ try {
          $response['subscription_start'] = $subscription->current_period_start;
          $response['subscription_end'] = $subscription->current_period_end;
 
-         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end);
+         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end, $club);
 
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
@@ -59,7 +60,7 @@ echo json_encode($response);
 //echo $charge;
 
 
-function postToDataServer($package, $date_paid, $next_payment ){
+function postToDataServer($package, $date_paid, $next_payment, $club_id ){
 // Your ID and token
 $blogID = '8070105920543249955';
 $authToken = 'xzcdsfrfawskfesd';
@@ -70,7 +71,7 @@ $postData = array(
     'date_paid' => $date_paid,
     'amount_paid' => '0.00',
     'date_of_next_payment' => $next_payment,
-    'club_id' => '1'
+    'club_id' => $club_id
 );
 
 // Create the context for the request
