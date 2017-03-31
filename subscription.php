@@ -27,7 +27,7 @@ try {
         $response['customer_id'] = $subscription->customer;
         $response['subscription_status'] = $subscription->status;
         $response['plan'] = $subscription->plan->id;
-        $response['plan_name'] = $subscription->items->data->name;
+        $response['plan_name'] = $subscription->name;
 
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
