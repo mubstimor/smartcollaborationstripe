@@ -10,7 +10,7 @@ $my_stripe_key = getenv('STRIPE_KEY');
    if (isset($subscription_id)){
    echo getSubscriptionDetails($subscription_id);
    } else{
-       echo "subscription should be provide";
+       echo "subscription should be provided.";
    }
 
 function getSubscriptionDetails($subscription_id){
@@ -27,6 +27,7 @@ try {
         $response['customer_id'] = $subscription->customer;
         $response['subscription_status'] = $subscription->status;
         $response['plan'] = $subscription->plan->id;
+        $response['plan_name'] = $subscription->name;
 
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
