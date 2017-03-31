@@ -30,7 +30,7 @@ try {
          $response['subscription_start'] = $subscription->current_period_start;
          $response['subscription_end'] = $subscription->current_period_end;
 
-         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end, $club);
+         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end, $customer->id, 'Active', $club);
          $response['hookresponse'] = $hookresponse;
 
      } else { // Charge was not paid!
@@ -60,8 +60,10 @@ header('Content-Type: application/json');
 echo json_encode($response);
 //echo $charge;
 
-
-function postToDataServer($package, $date_paid, $next_payment, $club_id ){
+/**
+* Based on http://stackoverflow.com/questions/16920291/post-request-with-json-body
+*/
+function postToDataServer($package, $date_paid, $next_payment, $stripe_customer_id, $status, $club_id ){
 // Your ID and token
 $blogID = '8070105920543249955';
 $authToken = 'xzcdsfrfawskfesd';
@@ -72,6 +74,8 @@ $postData = array(
     'date_paid' => $date_paid,
     'amount_paid' => '0.00',
     'date_of_next_payment' => $next_payment,
+    'payment_id' => $stripe_customer_id,
+    'status' => $status,
     'club_id' => $club_id
 );
 
