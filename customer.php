@@ -28,7 +28,9 @@ try {
          $response['subscription_id'] = $subscription->id;
          $response['subscription_start'] = $subscription->current_period_start;
          $response['subscription_end'] = $subscription->current_period_end;
-         
+
+         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end);
+
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
         $response['message'] = "Failed to create customer.";
@@ -57,4 +59,43 @@ echo json_encode($response);
 //echo $charge;
 
 
+function postToDataServer($package, $date_paid, $next_payment ){
+// Your ID and token
+$blogID = '8070105920543249955';
+$authToken = 'xzcdsfrfawskfesd';
+
+// The data to send to the API
+$postData = array(
+    'package' => $package,
+    'date_paid' => $date_paid,
+    'amount_paid' => '0.00',
+    'date_of_next_payment' => $next_payment,
+    'club_id' => '1'
+);
+
+// Create the context for the request
+$context = stream_context_create(array(
+    'http' => array(
+        // http://www.php.net/manual/en/context.http.php
+        'method' => 'POST',
+        'header' => "Authorization: {$authToken}\r\n".
+            "Content-Type: application/json\r\n",
+        'content' => json_encode($postData)
+    )
+));
+
+// Send the request
+$response = file_get_contents('http://smartcollaborationvapor.herokuapp.com/subscriptions', FALSE, $context);
+
+// Check for errors
+if($response === FALSE){
+    die('Error');
+}
+
+// Decode the response
+$responseData = json_decode($response, TRUE);
+
+// Print the date from the response
+return $responseData['recorded'];
+}
 ?>
