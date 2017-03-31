@@ -30,7 +30,7 @@ try {
          $response['subscription_start'] = $subscription->current_period_start;
          $response['subscription_end'] = $subscription->current_period_end;
 
-         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end, $customer->id, 'Active', $club);
+         $hookresponse = postToDataServer($subscription->id, $subscription->current_period_start, $subscription->current_period_end, $customer->id, $subscription->status, $club);
          $response['hookresponse'] = $hookresponse;
 
      } else { // Charge was not paid!
