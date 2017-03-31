@@ -26,8 +26,9 @@ try {
 
          $subscription = \Stripe\Subscription::create(array('customer' => $customer->id, 'plan' => 'basic-monthly' ));
          $response['subscription_id'] = $subscription->id;
-
-
+         $response['subscription_start'] = $subscription->current_period_start;
+         $response['subscription_end'] = $subscription->current_period_end;
+         
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
         $response['message'] = "Failed to create customer.";
