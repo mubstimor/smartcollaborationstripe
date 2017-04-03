@@ -14,7 +14,9 @@ $event = \Stripe\Event::retrieve($event_json->id);
  if ($event->id == true) {
     $event_type = $event->type;
     if($event_type == "customer.subscription.created"){
-         mail("mubstimor@gmail.com", "Stripe Hook", "subscription for client created", $headers);
+         mail("mubstimor@gmail.com", "Stripe Hook", "subscription for client created");
+    }else{
+        mail("mubstimor@gmail.com", "Stripe Hook", "hook ".$event_type." called ");
     }
  }
 
