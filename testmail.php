@@ -18,6 +18,6 @@ $result = $mgClient->sendMessage("$domain",
                 'to'      => 'Timothy Mubiru <tm283@student.le.ac.uk>',
                 'subject' => 'Hello Timothy Mubiru',
                 'text'    => 'Congratulations Timothy Mubiru, you just sent an email with Mailgun!  You are truly awesome! '));
-
+echo $result;
 
 ?>
