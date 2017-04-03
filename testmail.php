@@ -6,7 +6,9 @@ use MailgunMailgun;
 
 // mail
 # Instantiate the client.
-$mgClient = new Mailgun('key-11eb04e330dfa31423e8aed18038d54c');
+// $mgClient = new Mailgun('key-11eb04e330dfa31423e8aed18038d54c');
+$mgClient = new Mailgun('key-11eb04e330dfa31423e8aed18038d54c', new \Http\Adapter\Guzzle6\Client());
+
 $domain = "sandboxeb82f6b056dc4ba1b8e89c090ea35761.mailgun.org";
 
 # Make the call to the client.
