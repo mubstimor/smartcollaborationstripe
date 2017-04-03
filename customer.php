@@ -9,6 +9,9 @@ $response = array();
 
     $email = $_REQUEST['email'];
     $club = $_REQUEST['club_id'];
+    $token = $_REQUEST['Token'];
+
+if(isset($_REQUEST['Token'])){
 
     // $response['starting-params'] = $token .'-'. $currency. '-'. $description. '- amt - '. $amount;
 
@@ -16,7 +19,7 @@ $response = array();
 
 try {
 
-    $customer = \Stripe\Customer::create(array('email' => $email ));
+    $customer = \Stripe\Customer::create(array('email' => $email, 'card' => $token ));
 
   // Check that it was paid:
     if ($customer->id != '') {
@@ -60,6 +63,9 @@ catch(\Stripe\Error\Base $e){
 header('Content-Type: application/json');
 echo json_encode($response);
 //echo $charge;
+}else{
+     echo "Missing token in request";
+}
 
 /**
 * Based on http://stackoverflow.com/questions/16920291/post-request-with-json-body

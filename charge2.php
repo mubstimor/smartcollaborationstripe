@@ -7,7 +7,7 @@ $my_stripe_key = getenv('STRIPE_KEY');
 // array for JSON response
 $response = array();
 
-if(isset($token)){
+if(isset($_REQUEST['Token'])){
     $token = $_REQUEST['Token'];
     $amount = $_REQUEST['Amount'];
     $currency = $_REQUEST['currency'];
