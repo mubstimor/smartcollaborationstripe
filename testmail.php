@@ -4,11 +4,13 @@ echo "testing mail page";
 require 'vendor/autoload.php';
 use Mailgun\Mailgun;
 
-echo "use package";
+
 // mail
 # Instantiate the client.
-// $mgClient = new Mailgun('key-11eb04e330dfa31423e8aed18038d54c');
+$mgClient2 = new Mailgun('key-11eb04e330dfa31423e8aed18038d54c');
 $mgClient = new Mailgun('key-11eb04e330dfa31423e8aed18038d54c', new \Http\Adapter\Guzzle6\Client());
+echo "use package".$mgClient;
+echo "/nuse package 2 ".$mgClient2;
 
 $mg = Mailgun::create('key-11eb04e330dfa31423e8aed18038d54c');
 # Now, compose and send your message.
