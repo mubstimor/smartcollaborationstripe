@@ -1,11 +1,7 @@
 <?php 
 
-require_once('vendor/stripe/stripe-php/init.php');
-# Include the Autoloader (see "Libraries" for install instructions)
 require 'vendor/autoload.php';
 use MailgunMailgun;
-
-$my_stripe_key = getenv('STRIPE_KEY');
 
 // mail
 # Instantiate the client.
