@@ -1,4 +1,5 @@
 <?php 
+echo "testing mail page";
 
 require 'vendor/autoload.php';
 use MailgunMailgun;
