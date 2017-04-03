@@ -25,7 +25,8 @@ try {
         $response['customer_id'] = $customer->id;
         $response['email'] = $customer->email; 
 
-         $subscription = \Stripe\Subscription::create(array('customer' => $customer->id, 'plan' => 'basic-monthly' ));
+// set users to yearly plan
+         $subscription = \Stripe\Subscription::create(array('customer' => $customer->id, 'plan' => 'annual-plan' ));
          $response['subscription_id'] = $subscription->id;
          $response['subscription_start'] = $subscription->current_period_start;
          $response['subscription_end'] = $subscription->current_period_end;
