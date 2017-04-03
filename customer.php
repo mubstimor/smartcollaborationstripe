@@ -44,7 +44,7 @@ try {
 
          // send email to client
          $message = buildEmail();
-         mail($email,"Payment received - PhysioAid", $message, $headers);
+         mail($email, "Payment received - PhysioAid", "Payment received", $headers);
 
      } else { // Charge was not paid!
         $response['Failure'] = "Failure";
