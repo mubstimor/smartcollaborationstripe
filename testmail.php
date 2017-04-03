@@ -1,4 +1,5 @@
 <?php 
+error_reporting(1);
 echo "testing mail page";
 
  //mail("mubstimor@gmail.com", "Stripe Hook", "hook called ");
