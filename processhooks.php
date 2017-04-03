@@ -7,6 +7,8 @@ $my_stripe_key = getenv('STRIPE_KEY');
 $input = @file_get_contents("php://input");
 $event_json = json_decode($input);
 
+\Stripe\Stripe::setApiKey($my_stripe_key);
+
 // Verify the event by fetching it from Stripe
 $event = \Stripe\Event::retrieve($event_json->id);
 
