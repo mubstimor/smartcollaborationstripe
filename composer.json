@@ -1,8 +1,6 @@
 {
     "require": {
         "stripe/stripe-php": "^4.5",
-        "mailgun/mailgun-php": "^2.1",
-        "php-http/guzzle6-adapter": "^1.1",
-        "php-http/message": "^1.5"
+        "sendgrid/sendgrid": "~5.4"
     }
 }

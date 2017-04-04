@@ -1,11 +1,13 @@
 <?php 
+require 'vendor/autoload.php';
+
 error_reporting(1);
 echo "testing mail page";
 
  //mail("mubstimor@gmail.com", "Stripe Hook", "hook called ");
 
  // If you are not using Composer
-require("vendor/sendgrid/SendGrid.php");
+// require("vendor/sendgrid/sendgrid/SendGrid.php");
 $from = new SendGrid\Email("Example User", "example@gmail.com");
 $subject = "Sending with SendGrid is Fun";
 $to = new SendGrid\Email("Example User", "mubstimor@gmail.com");
