@@ -6,7 +6,7 @@ $my_stripe_key = getenv('STRIPE_KEY');
 
 $invoice = \Stripe\Invoice::create(array("customer" => "cus_APk7l3Gz4Hk5QY"));
 
-if ($invoice->id == true) {
+if ($invoice->id != "") {
         //$response['status'] = "Success";
         // $response['message'] = "Payment has been charged!!";
         echo "amount due ".$invoice->amount_due;
