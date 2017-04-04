@@ -1,4 +1,5 @@
 <?php
+require_once('vendor/stripe/stripe-php/init.php');
 
 $my_stripe_key = getenv('STRIPE_KEY');
 
