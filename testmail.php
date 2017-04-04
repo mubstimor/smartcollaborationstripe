@@ -6,6 +6,7 @@ error_reporting(1);
 $apiKey = getenv('SENDGRID_API_KEY');
 $sg = new \SendGrid($apiKey);
 
+echo $sg;
  //mail("mubstimor@gmail.com", "Stripe Hook", "hook called ");
 
  // If you are not using Composer
