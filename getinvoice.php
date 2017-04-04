@@ -5,6 +5,7 @@ $my_stripe_key = getenv('STRIPE_KEY');
 
 \Stripe\Stripe::setApiKey($my_stripe_key);
 
+try {
 $invoice = \Stripe\Invoice::create(array("customer" => "cus_APk7l3Gz4Hk5QY"));
 
 if ($invoice->id != "") {
@@ -14,5 +15,24 @@ if ($invoice->id != "") {
      }else{
         echo "invoice not created";
      }
+}
+catch(\Stripe\Error\Card $e) {
+ $body = $e->getJsonBody();
+    $err  = $body['error'];
+    echo $err['message'];
+}
+catch(\Stripe\Error\Authentication $e){
+    $body = $e->getJsonBody();
+    $err  = $body['error'];
+    echo $err['message'];
+}
+catch(\Stripe\Error\InvalidRequest $e){
+    $body = $e->getJsonBody();
+    $err  = $body['error'];
+    echo $err['message'];
+}
+catch(\Stripe\Error\Base $e){
+    echo "unable to process payment";
+}
 
  ?>
