@@ -6,7 +6,7 @@ $my_stripe_key = getenv('STRIPE_KEY');
 \Stripe\Stripe::setApiKey($my_stripe_key);
 
 try {
-$invoice = \Stripe\Invoice::create(array("customer" => "cus_APk7l3Gz4Hk5QY"));
+$invoice = \Stripe\Invoice::create(array("customer" => "cus_APkuS4jmLtnQaT"));
 
 if ($invoice->id != "") {
         //$response['status'] = "Success";
