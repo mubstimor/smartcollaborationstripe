@@ -10,7 +10,7 @@ error_reporting(1);
 // require("vendor/sendgrid/sendgrid/SendGrid.php");
 $from = new SendGrid\Email("Example User", "example@gmail.com");
 
-echo "testing mail page";
+echo "testing mail page ".$from;
 
 $subject = "Sending with SendGrid is Fun";
 $to = new SendGrid\Email("Example User", "mubstimor@gmail.com");
