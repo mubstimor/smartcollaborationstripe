@@ -3,6 +3,8 @@ require 'vendor/autoload.php';
 
 error_reporting(1);
 
+$apiKey = getenv('SENDGRID_API_KEY');
+$sg = new \SendGrid($apiKey);
 
  //mail("mubstimor@gmail.com", "Stripe Hook", "hook called ");
 
@@ -16,8 +18,7 @@ $subject = "Sending with SendGrid is Fun";
 $to = new \SendGrid\Email("Example User", "mubstimor@gmail.com");
 $content = new \SendGrid\Content("text/plain", "and easy to do anywhere, even with PHP");
 $mail = new \SendGrid\Mail($from, $subject, $to, $content);
-$apiKey = getenv('SENDGRID_API_KEY');
-$sg = new \SendGrid($apiKey);
+
 $response = $sg->client->mail()->send()->post($mail);
 echo $response->statusCode();
 echo $response->headers();
