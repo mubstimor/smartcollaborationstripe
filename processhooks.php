@@ -71,8 +71,10 @@ catch(\Stripe\Error\Base $e){
 
 function notifyAppOnTransaction($customer, $amount, $status){
 // Your ID and token
-$blogID = '8070105920543249955';
-$authToken = 'xzcdsfrfawskfesd';
+// $blogID = '8070105920543249955';
+// $authToken = 'xzcdsfrfawskfesd';
+$auth_key = getenv('SV_KEY');
+$authToken = 'Basic '.$auth_key;
 
 // The data to send to the API
 $postData = array(
